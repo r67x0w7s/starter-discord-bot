@@ -1,5 +1,5 @@
 
-**Update Time: 2024/04/16 20:45:07**
+**Update Time: 2024/04/16 20:46:53**
 
 # starter-discord-bot
 
@@ -97,3 +97,5 @@ At this point, make sure you've collected all the variables you will use in your
 <p align="center">
     <img src="./doc/8.png"  width="600px"/>
 </p>
+
+# Set up interactions endpoint
