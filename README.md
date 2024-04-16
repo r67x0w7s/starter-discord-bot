@@ -1,5 +1,5 @@
 
-**Update Time: 2024/04/16 20:46:53**
+**Update Time: 2024/04/16 20:51:54**
 
 # starter-discord-bot
 
@@ -99,3 +99,55 @@ At this point, make sure you've collected all the variables you will use in your
 </p>
 
 # Set up interactions endpoint
+**This step is VERY IMPORTANT**, it lets discord know the url at which the bot is running. Discord will send interaction event payloads to this endpoint.
+
+<p align="center">
+    <img src="./doc/9.png"  width="600px"/>
+</p>
+
+When you first enter the endpoint into the ui, discord will make a cryptographically signed request to your endpoint and expect you to verify the signature. This will establish trust between discord and your hosted bot.
+
+1. Make sure your bot is deployed to Cyclic
+2. Before entering the endpoint **make sure** the environment variables have been properly configured and that `process.env.PUBLIC_KEY` is set.
+3. Enter the your Cyclic App url as the endpoint url into discord and Save Changes (eg `https://[your bot's url].cyclic.app/interactions`)
+
+- The `/interactions` endpoint is using the `verifyKeyMiddleware` function to verify the keys automatically
+
+```js
+app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => 
+    ...
+```
+
+# Register slash commands
+1. Make sure all of the environment variables have been correctly set up
+2. Go to `https://[your bot's url].cyclic.app/register_commands`
+   This route makes a put request to register two commands on your server: `/yo` and `/dm`
+        ```
+        app.get('/register_commands', async (req,res) =>
+        ```
+
+Refer to the [discord docs](https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-guild-application-commands) to extend this further 
+
+After registering commands, you should see them available in your discord server
+
+
+<p align="center">
+    <img src="./doc/10.png"  width="500px"/>
+</p>
+
+# Try the bot!
+
+In any channel type `/yo` or `/dm`.
+
+NOTE: this starter does not configure 
+
+## `/yo`
+<p align="center">
+    <img src="./doc/12.png"  width="500px"/>
+</p>
+
+## `/dm`
+
+<p align="center">
+    <img src="./doc/11.png"  width="500px"/>
+</p>
