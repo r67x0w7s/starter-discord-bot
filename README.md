@@ -1,5 +1,5 @@
 
-**Update Time: 2024/05/17 16:56:00**
+**Update Time: 2024/05/17 17:00:03**
 
 # starter-discord-bot
 
